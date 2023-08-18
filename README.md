@@ -1,4 +1,4 @@
-# surtaal
+# SurTaal
 
 A Music Player Using Flutter.
 
