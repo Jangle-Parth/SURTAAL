@@ -4,8 +4,10 @@ import 'package:surtaal/Services/music_operations.dart';
 import 'package:surtaal/models/Categorys.dart';
 import 'package:surtaal/models/music.dart';
 
+// ignore: must_be_immutable
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Function _miniPlayer;
+  Home(this._miniPlayer);
 
   Widget createAppBar(String message) {
     return AppBar(
@@ -53,9 +55,14 @@ class Home extends StatelessWidget {
           height: 200,
           width: 200,
           padding: EdgeInsets.all(30),
-          child: Image.network(
-            music.imageURL,
-            fit: BoxFit.cover,
+          child: InkWell(
+            onTap: () {
+              _miniPlayer(music);
+            },
+            child: Image.network(
+              music.imageURL,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Text(
