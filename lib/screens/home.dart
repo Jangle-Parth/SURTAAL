@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:surtaal/Services/category_operations.dart';
-import 'package:surtaal/Services/music_operations.dart';
 import 'package:surtaal/models/Categorys.dart';
 import 'package:surtaal/models/music.dart';
+import 'package:surtaal/Services/music_operations.dart';
 
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
@@ -57,7 +57,7 @@ class Home extends StatelessWidget {
           padding: EdgeInsets.all(30),
           child: InkWell(
             onTap: () {
-              _miniPlayer(music);
+              _miniPlayer(music, stop: true);
             },
             child: Image.network(
               music.imageURL,
@@ -78,7 +78,6 @@ class Home extends StatelessWidget {
   }
 
   Widget createMusicList(String label) {
-    List<Music> musicllist = MusicOperations.getMusic();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -92,9 +91,9 @@ class Home extends StatelessWidget {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemBuilder: (ctx, index) {
-              return createmusic(musicllist[index]);
+              return createmusic(musicList[index]);
             },
-            itemCount: musicllist.length,
+            itemCount: musicList.length,
           ),
         ),
       ],

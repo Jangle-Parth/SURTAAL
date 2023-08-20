@@ -16,13 +16,19 @@ class _MyAppState extends State<MyApp> {
   AudioPlayer _audioPlayer = new AudioPlayer();
   var Tabs = [];
   int CurrentTabIndex = 0;
+  bool isPlaying = false;
   Music? music;
-  Widget miniPlayer(Music? music) {
+  Widget miniPlayer(Music? music, {bool stop = false}) {
     this.music = music;
     setState(() {});
     if (music == null) {
       return SizedBox();
     }
+    if (stop) {
+      isPlaying = false;
+      _audioPlayer.stop();
+    }
+    setState(() {});
     Size devicesize = MediaQuery.of(context).size;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
@@ -46,12 +52,17 @@ class _MyAppState extends State<MyApp> {
           padding: EdgeInsets.only(right: 40),
           child: IconButton(
               onPressed: () async {
-                await _audioPlayer.play(music.audiourl);
+                isPlaying = !isPlaying;
+                if (isPlaying) {
+                  await _audioPlayer.play(music.audiourl);
+                } else {
+                  await _audioPlayer.play(music.audiourl);
+                }
+                setState(() {});
               },
-              icon: Icon(
-                Icons.play_arrow,
-                color: Colors.white54,
-              )),
+              icon: isPlaying
+                  ? Icon(Icons.pause, color: Colors.white54)
+                  : Icon(Icons.play_arrow, color: Colors.white54)),
         )
       ]),
     );

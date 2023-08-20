@@ -35,7 +35,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  audioplayers: ^0.20.1
+  audioplayers: ^0.20.0
+  
 
 
 
@@ -55,14 +56,19 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+  uses-material-design: true  
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+  - lib\songs\Baaton Baaton Main (Official Video) Shashwat Sachdev ft. Anumita Nadesan - New Song 2022.mp3
+  - lib\songs\Jain - Makeba (Official Video).mp3
+  - lib\songs\Khalasi - Coke Studio Bharat.mp3
+  - lib\songs\Lamhey- Anubha Bajaj - Trending Song 2023 - Official Video.mp3
+  - lib\songs\RANG MORLA - ADITYA GADHVI - PRIYA SARAIYA - PARTH BHARAT THAKKAR - VAARSO-SEASON1.mp3
+  - lib\songs\videoplayback.mp3
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
